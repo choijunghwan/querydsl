@@ -126,18 +126,22 @@ public class QuerydslBasicTest {
      */
     @Test
     public void resultFetch() {
+        //List
         List<Member> fetch = queryFactory
                 .selectFrom(member)
                 .fetch();
 
+        //단 건
         Member fetchOne = queryFactory
                 .selectFrom(QMember.member)
                 .fetchOne();
 
+        //처음 한 건 조회
         Member fetchFirst = queryFactory
                 .selectFrom(QMember.member)
                 .fetchFirst();
 
+        //페이징에서 사용
         QueryResults<Member> results = queryFactory
                 .selectFrom(member)
                 .fetchResults();
@@ -145,6 +149,7 @@ public class QuerydslBasicTest {
         results.getTotal();
         List<Member> content = results.getResults();
 
+        //count 쿼릴로 변경
         long total = queryFactory
                 .selectFrom(member)
                 .fetchCount();
